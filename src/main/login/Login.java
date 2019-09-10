@@ -24,11 +24,13 @@ public class Login {
             invalid(id1, pw1);
         }
     }
-// if login is successful
+
+    // if login is successful
     private static String login(String id1) {
         return "Welcome to JasonHMS " + id1 + "!";
     }
-// if username or password does not match
+
+    // if username or password does not match
     private static void invalid(String id1, String pw1) {
         if (!id1.equals(admin)) {
             System.out.println("Your username is invalid!");
