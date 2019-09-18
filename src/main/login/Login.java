@@ -9,9 +9,7 @@ public class Login {
 
     public static void main(String[] args) {
 
-
         Scanner reader = new Scanner(System.in);
-
 
         while (true) {
             System.out.print("What do you want to do? Login, Register, or Quit?: ");
@@ -31,6 +29,7 @@ public class Login {
 
                 if (id1.equals(admin) && pw1.equals(adminpw)) {
                     System.out.println(login(id1));
+                    break;
                 }
                 if (id1.equals("Poop") && pw1.equals("poop")) {
                     System.out.println(login(id1));
@@ -50,7 +49,7 @@ public class Login {
     private static void invalid(String id1, String pw1) {
         if (!id1.equals(admin)) {
             System.out.println("Your username is invalid!");
-        } else if (id1.equals(admin) && !pw1.equals(adminpw)) {
+        } else if (!pw1.equals(adminpw)) {
             System.out.println("Your password is invalid!");
         }
     }
