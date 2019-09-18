@@ -50,6 +50,7 @@ public class Login {
     private static void invalid(String id1, String pw1) {
         if (!id1.equals(admin)) {
             System.out.println("Your username is invalid!");
+
         } else if (id1.equals(admin) && !pw1.equals(adminpw)) {
             System.out.println("Your password is invalid!");
 
@@ -57,9 +58,9 @@ public class Login {
 
     }
 
-    public void Register(String id1, String pw1) {
-        id1 = "Poop"; //needs to take user input
-        pw1 = "poop"; //needs to take user input
+    public void register() {
+        String id2 = "Poop"; //needs to take user input
+        String pw2 = "poop"; //needs to take user input
         System.out.println("Registered successfully!");
     }
 
