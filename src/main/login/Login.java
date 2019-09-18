@@ -54,9 +54,9 @@ public class Login {
         }
     }
 
-    public void register() {
-        String id2 = "Poop"; //needs to take user input
-        String pw2 = "poop"; //needs to take user input
-        System.out.println("Registered successfully!");
-    }
+    //  public void register() {
+    //  String id2 = "Poop"; //needs to take user input
+    //  String pw2 = "poop"; //needs to take user input
+    //  System.out.println("Registered successfully!");
+    //  }
 }
