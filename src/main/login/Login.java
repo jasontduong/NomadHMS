@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Login {
 
-    public static String admin = "adminuser";
-    public static String adminpw = "admin$";
+    private static String admin = "adminuser";
+    private static String adminpw = "admin$";
 
     public static void main(String[] args) {
 
@@ -32,7 +32,7 @@ public class Login {
                 if (id1.equals(admin) && pw1.equals(adminpw)) {
                     System.out.println(login(id1));
                 }
-                if (id1.equals(id1.equals("Poop")) && pw1.equals("poop")) {
+                if (id1.equals("Poop") && pw1.equals("poop")) {
                     System.out.println(login(id1));
                     break;
                 }
@@ -50,12 +50,9 @@ public class Login {
     private static void invalid(String id1, String pw1) {
         if (!id1.equals(admin)) {
             System.out.println("Your username is invalid!");
-
         } else if (id1.equals(admin) && !pw1.equals(adminpw)) {
             System.out.println("Your password is invalid!");
-
         }
-
     }
 
     public void register() {
@@ -63,5 +60,4 @@ public class Login {
         String pw2 = "poop"; //needs to take user input
         System.out.println("Registered successfully!");
     }
-
 }
