@@ -11,6 +11,7 @@ public class Login {
         choice();
     }
 
+    // asks user for a choice
     private static void choice() {
         Scanner reader1 = new Scanner(System.in);
 
