@@ -7,12 +7,8 @@ public class Login {
     private static String admin = "adminuser";
     private static String adminpw = "admin$";
 
-    public static void main(String[] args) {
-        choice();
-    }
-
     // asks user for a choice
-    private static void choice() {
+    public void choice() {
         Scanner reader1 = new Scanner(System.in);
 
         while (true) {
@@ -25,14 +21,14 @@ public class Login {
             }
 
             if (choice1.equals("Login")) {
-                attemptlogin();
+                attemptLogin();
                 break;
             }
         }
     }
 
     // logs user in
-    private static void attemptlogin() {
+    public void attemptLogin() {
         Scanner reader2 = new Scanner(System.in);
         while (true) {
             System.out.print("Type your username: ");
@@ -41,11 +37,11 @@ public class Login {
             String pw1 = reader2.nextLine();
 
             if (id1.equals(admin) && pw1.equals(adminpw)) {
-                System.out.println(login(id1));
+                System.out.println(loginSuccess(id1));
                 break;
             }
             if (id1.equals("Poop") && pw1.equals("poop")) {
-                System.out.println(login(id1));
+                System.out.println(loginSuccess(id1));
                 break;
             }
             invalid(id1, pw1);
@@ -53,7 +49,7 @@ public class Login {
     }
 
     // if username or password does not match
-    private static void invalid(String id1, String pw1) {
+    public void invalid(String id1, String pw1) {
         if (!id1.equals(admin)) {
             System.out.println("Your username is invalid! Try again!");
         } else if (!pw1.equals(adminpw)) {
@@ -61,8 +57,7 @@ public class Login {
         }
     }
 
-    // if login is successful
-    private static String login(String id1) {
+    public String loginSuccess(String id1) {
         return "Welcome to JasonHMS " + id1 + "!";
     }
 
