@@ -1,14 +1,13 @@
 package login;
 
-import login.LoginDatabase;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Login {
 
-    //    private static String admin = "adminuser";
-//    private static String adminpw = "admin$";
     LoginDatabase logMeIn = new LoginDatabase();
+    UserList newUserList = new UserList();
+    PhoneNumberList newPhone = new PhoneNumberList();
 
 
     // asks user for a choice
@@ -16,7 +15,7 @@ public class Login {
         Scanner reader1 = new Scanner(System.in);
 
         while (true) {
-            System.out.print("What do you want to do? Login, or Quit?: ");
+            System.out.print("What do you want to do? Login, Register, or Quit?: ");
             String choice1 = reader1.nextLine();
 
             if (choice1.equals("Quit")) {
@@ -28,7 +27,49 @@ public class Login {
                 attemptLogin();
                 break;
             }
+
+            if (choice1.equals("Register")) {
+                attemptRegister();
+                break;
+            }
         }
+    }
+
+    public ArrayList<String> listAllUsers() {
+        return newUserList.userList;
+    }
+
+    public void attemptRegister() {
+        Scanner reader3 = new Scanner(System.in);
+
+        System.out.println("Pick one of the two: Bob, or Molly");
+        String regUser = reader3.nextLine();
+
+        if (regUser.equals("Bob")) {
+            newUserList.addUser("Bob");
+        } else if (regUser.equals("Molly")) {
+            newUserList.addUser("Molly");
+        }
+        System.out.println("Success! Registered ID: " + regUser);
+
+        System.out.println("Would you like to add a phone number to your account? Yes or No? ");
+
+        String phoneChoice = reader3.nextLine();
+
+        if (phoneChoice.equals("Yes")) {
+            registerPhone();
+        } else {
+            System.out.println("Goodbye " + regUser + "!");
+        }
+    }
+
+
+    public void registerPhone() {
+        Scanner reader4 = new Scanner(System.in);
+        System.out.println("Please input your number now: ");
+        Integer regPhone = Integer.parseInt(reader4.nextLine());
+        newPhone.addPhone(regPhone);
+        System.out.println("You have added the number " + regPhone + " to your account!");
     }
 
     // logs user in
