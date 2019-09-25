@@ -1,11 +1,15 @@
 package login;
 
+import login.LoginDatabase;
+
 import java.util.Scanner;
 
 public class Login {
 
-    private static String admin = "adminuser";
-    private static String adminpw = "admin$";
+    //    private static String admin = "adminuser";
+//    private static String adminpw = "admin$";
+    LoginDatabase logMeIn = new LoginDatabase();
+
 
     // asks user for a choice
     public void choice() {
@@ -36,11 +40,7 @@ public class Login {
             System.out.print("Type your password: ");
             String pw1 = reader2.nextLine();
 
-            if (id1.equals(admin) && pw1.equals(adminpw)) {
-                System.out.println(loginSuccess(id1));
-                break;
-            }
-            if (id1.equals("Poop") && pw1.equals("poop")) {
+            if (id1.contains(logMeIn.usernames()) && pw1.equals(logMeIn.passwords())) {
                 System.out.println(loginSuccess(id1));
                 break;
             }
@@ -50,9 +50,9 @@ public class Login {
 
     // if username or password does not match
     public void invalid(String id1, String pw1) {
-        if (!id1.equals(admin)) {
+        if (!id1.contains(logMeIn.usernames())) {
             System.out.println("Your username is invalid! Try again!");
-        } else if (!pw1.equals(adminpw)) {
+        } else if (!pw1.contains(logMeIn.passwords())) {
             System.out.println("Your password is invalid! Try again!");
         }
     }
