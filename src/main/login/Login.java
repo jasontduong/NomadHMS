@@ -1,105 +1,103 @@
 package login;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
-public class Login {
+public class Login implements Loadable, Saveable {
 
-    LoginDatabase logMeIn = new LoginDatabase();
-    UserList newUserList = new UserList();
+    ArrayList<String> newUserList = new ArrayList<String>();
     PhoneNumberList newPhone = new PhoneNumberList();
 
-
-    // asks user for a choice
-    public void choice() {
+    public void choice() throws IOException {
+        //   List<String> loginAccounts = Files.readAllLines(Paths.get("accounts.txt"));;
         Scanner reader1 = new Scanner(System.in);
 
         while (true) {
             System.out.print("What do you want to do? Login, Register, or Quit?: ");
             String choice1 = reader1.nextLine();
 
-            if (choice1.equals("Quit")) {
+            if (choice1.equals("Quit") || choice1.equals("quit")) {
                 System.out.println("Okay bye!");
                 break;
             }
 
-            if (choice1.equals("Login")) {
+            if (choice1.equals("Login") || choice1.equals("login")) {
                 attemptLogin();
                 break;
             }
 
-            if (choice1.equals("Register")) {
+            if (choice1.equals("Register") || choice1.equals("register")) {
                 attemptRegister();
-                break;
             }
-        }
-    }
-
-    public ArrayList<String> listAllUsers() {
-        return newUserList.userList;
-    }
-
-    public void attemptRegister() {
-        Scanner reader3 = new Scanner(System.in);
-
-        System.out.println("Pick one of the two: Bob, or Molly");
-        String regUser = reader3.nextLine();
-
-        if (regUser.equals("Bob")) {
-            newUserList.addUser("Bob");
-        } else if (regUser.equals("Molly")) {
-            newUserList.addUser("Molly");
-        }
-        System.out.println("Success! Registered ID: " + regUser);
-
-        System.out.println("Would you like to add a phone number to your account? Yes or No? ");
-
-        String phoneChoice = reader3.nextLine();
-
-        if (phoneChoice.equals("Yes")) {
-            registerPhone();
-        } else {
-            System.out.println("Goodbye " + regUser + "!");
+            break;
         }
     }
 
 
-    public void registerPhone() {
-        Scanner reader4 = new Scanner(System.in);
-        System.out.println("Please input your number now: ");
-        Integer regPhone = Integer.parseInt(reader4.nextLine());
-        newPhone.addPhone(regPhone);
-        System.out.println("You have added the number " + regPhone + " to your account!");
+    public void attemptRegister() throws IOException {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Registration Page");
+        System.out.println("Your username is a unique one so it cannot be changed.");
+        System.out.print("Username: ");
+        String user = input.next();
+        System.out.print("Password: ");
+        String pass = input.next();
+        System.out.println("Registration successful!");
+
+        save(user, pass);
     }
 
-    // logs user in
     public void attemptLogin() {
+        String filePath = ("accounts.txt");
         Scanner reader2 = new Scanner(System.in);
         while (true) {
             System.out.print("Type your username: ");
-            String id1 = reader2.nextLine();
+            String user = reader2.nextLine();
             System.out.print("Type your password: ");
-            String pw1 = reader2.nextLine();
+            String pass = reader2.nextLine();
+            load(user, pass);
+            break;
 
-            if (id1.contains(logMeIn.usernames()) && pw1.equals(logMeIn.passwords())) {
-                System.out.println(loginSuccess(id1));
-                break;
+        }
+
+    }
+
+    @Override
+    public void load(String user, String pass) {
+        String filePath = ("accounts.txt");
+        BufferedReader bufferedReader;
+        try {
+            bufferedReader = new BufferedReader(new FileReader(filePath));
+            String txt;
+            boolean loginExists = false;
+            while ((txt = bufferedReader.readLine()) != null) {
+                if (txt.equals(user + ":" + pass)) {
+                    loginExists = true;
+                    System.out.println("Login successful! Welcome.");
+                    break;
+                }
             }
-            invalid(id1, pw1);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    // if username or password does not match
-    public void invalid(String id1, String pw1) {
-        if (!id1.contains(logMeIn.usernames())) {
-            System.out.println("Your username is invalid! Try again!");
-        } else if (!pw1.contains(logMeIn.passwords())) {
-            System.out.println("Your password is invalid! Try again!");
-        }
+    @Override
+    public void save(String user1, String pass1) throws IOException {
+        BufferedWriter out = new BufferedWriter(new FileWriter("accounts.txt", true));
+        out.write(user1 + ":" + pass1);
+        out.newLine();
+        out.close();
     }
 
-    public String loginSuccess(String id1) {
-        return "Welcome to JasonHMS " + id1 + "!";
-    }
 
 }
+
+
+

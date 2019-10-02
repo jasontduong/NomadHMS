@@ -1,8 +1,8 @@
 package test;
 
 import login.PhoneNumberList;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestPhoneNumberList {
     PhoneNumberList testPhone;
 
-    @Before
+    @BeforeEach
     public void setup() {
         testPhone = new PhoneNumberList();
     }
