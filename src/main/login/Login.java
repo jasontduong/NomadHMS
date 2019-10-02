@@ -1,5 +1,8 @@
 package login;
 
+import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.*;
 import java.lang.reflect.Array;
 import java.nio.file.Files;
@@ -58,7 +61,11 @@ public class Login implements Loadable, Saveable {
             String user = reader2.nextLine();
             System.out.print("Type your password: ");
             String pass = reader2.nextLine();
-            load(user, pass);
+            if (load(user, pass)) {
+                System.out.println("Login Success!");
+            } else {
+                System.out.println("Invalid!");
+            }
             break;
 
         }
@@ -66,7 +73,7 @@ public class Login implements Loadable, Saveable {
     }
 
     @Override
-    public void load(String user, String pass) {
+    public boolean load(String user, String pass) {
         String filePath = ("accounts.txt");
         BufferedReader bufferedReader;
         try {
@@ -76,24 +83,25 @@ public class Login implements Loadable, Saveable {
             while ((txt = bufferedReader.readLine()) != null) {
                 if (txt.equals(user + ":" + pass)) {
                     loginExists = true;
-                    System.out.println("Login successful! Welcome.");
                     break;
                 }
             }
-
+            return loginExists;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public void save(String user1, String pass1) throws IOException {
+    public String save(String user1, String pass1) throws IOException {
         BufferedWriter out = new BufferedWriter(new FileWriter("accounts.txt", true));
         out.write(user1 + ":" + pass1);
         out.newLine();
         out.close();
+        return (user1 + ":" + pass1);
     }
 
 
