@@ -1,16 +1,10 @@
 package login;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.*;
-import java.lang.reflect.Array;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 public class Login implements Loadable, Saveable {
-
+    public String txt;
     ArrayList<String> newUserList = new ArrayList<String>();
     PhoneNumberList newPhone = new PhoneNumberList();
 
@@ -78,7 +72,6 @@ public class Login implements Loadable, Saveable {
         BufferedReader bufferedReader;
         try {
             bufferedReader = new BufferedReader(new FileReader(filePath));
-            String txt;
             boolean loginExists = false;
             while ((txt = bufferedReader.readLine()) != null) {
                 if (txt.equals(user + ":" + pass)) {

@@ -36,7 +36,13 @@ public class TestSaveAndLoad {
     @Test
     public void testSave() throws IOException {
         assertEquals(testLogin.save("newuser1", "newpass1"), "newuser1:newpass1");
+        assertEquals(testLogin.save("testuser6", "password"), "testuser6:password");
     }
 
+    @Test
+    public void testLoadFromTestSave() {
+        assertEquals(testLogin.load("newuser1", "newpass1"), true);
+        assertEquals(testLogin.load("testuser6", "password"), true);
+    }
 
 }
