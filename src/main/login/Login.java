@@ -8,30 +8,30 @@ public class Login implements Loadable, Saveable {
     ArrayList<String> newUserList = new ArrayList<String>();
     PhoneNumberList newPhone = new PhoneNumberList();
 
-    public void choice() throws IOException {
-        //   List<String> loginAccounts = Files.readAllLines(Paths.get("accounts.txt"));;
-        Scanner reader1 = new Scanner(System.in);
-
-        while (true) {
-            System.out.print("What do you want to do? Login, Register, or Quit?: ");
-            String choice1 = reader1.nextLine();
-
-            if (choice1.equals("Quit") || choice1.equals("quit")) {
-                System.out.println("Okay bye!");
-                break;
-            }
-
-            if (choice1.equals("Login") || choice1.equals("login")) {
-                attemptLogin();
-                break;
-            }
-
-            if (choice1.equals("Register") || choice1.equals("register")) {
-                attemptRegister();
-            }
-            break;
-        }
-    }
+//    public void choice() throws IOException {
+//        //   List<String> loginAccounts = Files.readAllLines(Paths.get("accounts.txt"));;
+//        Scanner reader1 = new Scanner(System.in);
+//
+//        while (true) {
+//            System.out.print("What do you want to do? Login, Register, or Quit?: ");
+//            String choice1 = reader1.nextLine();
+//
+//            if (choice1.equals("Quit") || choice1.equals("quit")) {
+//                System.out.println("Okay bye!");
+//                break;
+//            }
+//
+//            if (choice1.equals("Login") || choice1.equals("login")) {
+//                attemptLogin();
+//                break;
+//            }
+//
+//            if (choice1.equals("Register") || choice1.equals("register")) {
+//                attemptRegister();
+//            }
+//            break;
+//        }
+//    }
 
 
     public void attemptRegister() throws IOException {
