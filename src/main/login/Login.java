@@ -6,7 +6,6 @@ import java.util.*;
 public class Login implements Loadable, Saveable {
     public String txt;
     ArrayList<String> newUserList = new ArrayList<String>();
-    PhoneNumberList newPhone = new PhoneNumberList();
 
 //    public void choice() throws IOException {
 //        //   List<String> loginAccounts = Files.readAllLines(Paths.get("accounts.txt"));;
