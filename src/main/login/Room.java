@@ -8,10 +8,6 @@ public abstract class Room {
     private String roomNum;
     private int bedNumber;
 
-    public boolean hasTV;
-    public boolean hasInternet;
-    public boolean hasPhone;
-
 
     public Room(String roomNo) {
         roomNum = roomNo;
@@ -32,55 +28,25 @@ public abstract class Room {
         String bookRx = reader4.nextLine();
         if (bookRx.equals("A") || bookRx.equals("B") || bookRx.equals("C")) {
             System.out.println("Your suite has been booked! You have booked suite " + bookRx);
+        } else {
+            System.out.println("Invalid room choice, please pick A, B, or C.");
         }
         return "Thank you!";
     }
 
-//    public String getRoomNum() {
-//        return roomNum;
-//    }
-//
-//    public void setRoomNum(String roomNum) {
-//        this.roomNum = roomNum;
-//    }
-//
-//    public int getBedNumber() {
-//        return bedNumber;
-//    }
-//
-//    public void setBedNumber(int bedNumber) {
-//        this.bedNumber = bedNumber;
-//    }
-//
-//    public boolean isHasTV() {
-//        return hasTV;
-//    }
-//
-//    public void setHasTV(boolean hasTV) {
-//        this.hasTV = hasTV;
-//    }
-//
-//    public boolean isHasInternet() {
-//        return hasInternet;
-//    }
-//
-//    public void setHasInternet(boolean hasInternet) {
-//        this.hasInternet = hasInternet;
-//    }
-//
-//    public boolean isHasPhone() {
-//        return hasPhone;
-//    }
-//
-//    public void setHasPhone(boolean hasPhone) {
-//        this.hasPhone = hasPhone;
-//    }
-//
-//    public void amenitySpace() {}
-//
-//    public void smallBoardRoom() {}
-//
-//    public void largeBoardRoom() {}
+    public String getRoomNum() {
+        return roomNum;
+    }
+
+    public void setRoomNum(String roomNum) {
+        this.roomNum = roomNum;
+    }
+
+    public void amenitySpace() {}
+
+    public void smallBoardRoom() {}
+
+    public void largeBoardRoom() {}
 
 
 }

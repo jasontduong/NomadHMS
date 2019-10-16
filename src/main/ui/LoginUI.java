@@ -1,33 +1,31 @@
 package ui;
 
-import login.Login;
-import login.AmenitySpace;
-import login.MeetingRoom;
-import login.Room;
+import exceptions.LoginFail;
+import login.StartScreen;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class LoginUI extends JFrame {
-    public static String roomNo;
-    //    private static Room makeRoom;
-    public static MeetingRoom makeMR = new MeetingRoom(roomNo);
-    public static AmenitySpace makeAS = new AmenitySpace(roomNo);
+    //    public static String roomNo;
+//    //    private static Room makeRoom;
+//    public static MeetingRoom makeMR = new MeetingRoom(roomNo);
+//    public static AmenitySpace makeAS = new AmenitySpace(roomNo);
     public static final int WIDTH = 600;
     public static final int HEIGHT = 300;
 
-    public static void main(String[] args) throws IOException {
-        choice();
-
+    public static void main(String[] args) {
+        try {
+            choice();
+        } catch (IOException e) {
+            System.out.println("Invalid choice!");
+        }
 
     }
 
     public static void choice() throws IOException {
-        Login loginAttempt = new Login();
+        StartScreen startScreenAttempt = new StartScreen();
         Scanner reader1 = new Scanner(System.in);
 
         while (true) {
@@ -39,26 +37,28 @@ public class LoginUI extends JFrame {
                 break;
             }
 
+            if (choice1.equals("Register") || choice1.equals("register")) {
+                startScreenAttempt.attemptRegister();
+            }
             if (choice1.equals("Login") || choice1.equals("login")) {
-                loginAttempt.attemptLogin();
-                selectRoom();
-                break;
-            } else if (choice1.equals("Register") || choice1.equals("register")) {
-                loginAttempt.attemptRegister();
+                loginHelper();
             }
             break;
-        }
 
+        }
     }
 
-    public static void selectRoom() {
-        Scanner reader2 = new Scanner(System.in);
-        System.out.println("What room do you want to book? Suite (S), Amenity Space (AS), or Meeting Room (MR)?");
-        String selectR = reader2.nextLine();
-        if (selectR.equals("AS")) {
-            makeMR.bookRoom();
-        } else if (selectR.equals("MR")) {
-            makeMR.bookRoom();
+
+    public static void loginHelper() throws IOException {
+        StartScreen startScreenAttempt = new StartScreen();
+        try {
+            startScreenAttempt.attemptLogin();
+        } catch (LoginFail loginFail) {
+            System.out.println("Login is invalid!");
+        } finally {
+            System.out.println("Going back to start screen...");
+            choice();
+
         }
     }
 }

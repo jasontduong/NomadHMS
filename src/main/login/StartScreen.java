@@ -3,34 +3,16 @@ package login;
 import java.io.*;
 import java.util.*;
 
-public class Login implements Loadable, Saveable {
-    public String txt;
-    ArrayList<String> newUserList = new ArrayList<String>();
+import exceptions.LoginFail;
+import login.AmenitySpace;
+import login.MeetingRoom;
 
-//    public void choice() throws IOException {
-//        //   List<String> loginAccounts = Files.readAllLines(Paths.get("accounts.txt"));;
-//        Scanner reader1 = new Scanner(System.in);
-//
-//        while (true) {
-//            System.out.print("What do you want to do? Login, Register, or Quit?: ");
-//            String choice1 = reader1.nextLine();
-//
-//            if (choice1.equals("Quit") || choice1.equals("quit")) {
-//                System.out.println("Okay bye!");
-//                break;
-//            }
-//
-//            if (choice1.equals("Login") || choice1.equals("login")) {
-//                attemptLogin();
-//                break;
-//            }
-//
-//            if (choice1.equals("Register") || choice1.equals("register")) {
-//                attemptRegister();
-//            }
-//            break;
-//        }
-//    }
+public class StartScreen implements Loadable, Saveable {
+    public static String roomNo;
+    public static MeetingRoom makeMR = new MeetingRoom(roomNo);
+    public static AmenitySpace makeAS = new AmenitySpace(roomNo);
+    public String txt;
+
 
 
     public void attemptRegister() throws IOException {
@@ -46,7 +28,7 @@ public class Login implements Loadable, Saveable {
         save(user, pass);
     }
 
-    public void attemptLogin() {
+    public void attemptLogin() throws LoginFail {
         String filePath = ("accounts.txt");
         Scanner reader2 = new Scanner(System.in);
         while (true) {
@@ -56,18 +38,29 @@ public class Login implements Loadable, Saveable {
             String pass = reader2.nextLine();
             if (load(user, pass)) {
                 System.out.println("Login Success!");
-            } else {
-                System.out.println("Invalid!");
+                selectRoom();
+            } else if (!load(user, pass)) {
+                throw new LoginFail();
             }
             break;
-
         }
+    }
 
+
+    public static void selectRoom() {
+        Scanner reader2 = new Scanner(System.in);
+        System.out.println("What room do you want to book? Suite (S), Amenity Space (AS), or Meeting Room (MR)?");
+        String selectR = reader2.nextLine();
+        if (selectR.equals("AS")) {
+            makeAS.bookRoom();
+        } else if (selectR.equals("MR")) {
+            makeMR.bookRoom();
+        }
     }
 
     @Override
     public boolean load(String user, String pass) {
-        String filePath = ("accounts.txt");
+        String filePath = ("data/accounts.txt");
         BufferedReader bufferedReader;
         try {
             bufferedReader = new BufferedReader(new FileReader(filePath));
@@ -89,7 +82,7 @@ public class Login implements Loadable, Saveable {
 
     @Override
     public String save(String user1, String pass1) throws IOException {
-        BufferedWriter out = new BufferedWriter(new FileWriter("accounts.txt", true));
+        BufferedWriter out = new BufferedWriter(new FileWriter("data/accounts.txt", true));
         out.write(user1 + ":" + pass1);
         out.newLine();
         out.close();
