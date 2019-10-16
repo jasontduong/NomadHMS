@@ -20,9 +20,9 @@ public class StartScreen implements Loadable, Saveable {
         System.out.println("Registration Page");
         System.out.println("Your username is a unique one so it cannot be changed.");
         System.out.print("Username: ");
-        String user = input.next();
+        String user = "653";
         System.out.print("Password: ");
-        String pass = input.next();
+        String pass = "653";
         System.out.println("Registration successful!");
 
         save(user, pass);
@@ -33,9 +33,9 @@ public class StartScreen implements Loadable, Saveable {
         Scanner reader2 = new Scanner(System.in);
         while (true) {
             System.out.print("Type your username: ");
-            String user = reader2.nextLine();
+            String user = "123";
             System.out.print("Type your password: ");
-            String pass = reader2.nextLine();
+            String pass = "123";
             if (load(user, pass)) {
                 System.out.println("Login Success!");
                 selectRoom();
@@ -47,15 +47,16 @@ public class StartScreen implements Loadable, Saveable {
     }
 
 
-    public static void selectRoom() {
+    public static String selectRoom() {
         Scanner reader2 = new Scanner(System.in);
         System.out.println("What room do you want to book? Suite (S), Amenity Space (AS), or Meeting Room (MR)?");
-        String selectR = reader2.nextLine();
+        String selectR = "AS";
         if (selectR.equals("AS")) {
             makeAS.bookRoom();
         } else if (selectR.equals("MR")) {
             makeMR.bookRoom();
         }
+        return "Sure!";
     }
 
     @Override
@@ -72,8 +73,6 @@ public class StartScreen implements Loadable, Saveable {
                 }
             }
             return loginExists;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

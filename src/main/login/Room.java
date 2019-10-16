@@ -17,7 +17,7 @@ public abstract class Room {
     public String bookRoom() {
         Scanner reader4 = new Scanner(System.in);
         System.out.println("What room do you want to book? A, B, or C.");
-        String bookRx = reader4.nextLine();
+        String bookRx = "A";
         if (bookRx.equals("A") || bookRx.equals("B") || bookRx.equals("C")) {
             setRoomNum(bookRx);
             System.out.println("Your suite has been booked! You have booked suite " + getRoomNum());
