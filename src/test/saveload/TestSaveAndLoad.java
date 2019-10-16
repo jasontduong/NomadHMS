@@ -20,7 +20,7 @@ public class TestSaveAndLoad {
 
     @Test
     public void testLoadNotThere() {
-        assertEquals(testStartScreen.load("saveload", "saveload"), false);
+        assertEquals(testStartScreen.load("saveload123", "saveload123"), false);
         assertEquals(testStartScreen.load("will", "fail"), false);
         assertEquals(testStartScreen.load("wont", "pass"), false);
 

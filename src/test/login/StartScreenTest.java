@@ -63,7 +63,7 @@ class StartScreenTest {
     public void attemptLoginThrows() {
         StartScreen testStart = new StartScreen();
         try {
-            testStart.attemptLogin();
+            testStart.attemptLogin("notinlist", "notinlist");
         } catch (LoginFail e) {
         } //nothing to do here
 
@@ -73,7 +73,7 @@ class StartScreenTest {
     public void doesNotThrow() {
         StartScreen testStart = new StartScreen();
         try {
-            testStart.attemptLogin();
+            testStart.attemptLogin("123", "123");
         } catch (LoginFail ee) {
             fail();
         }

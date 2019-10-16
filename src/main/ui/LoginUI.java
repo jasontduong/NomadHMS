@@ -14,6 +14,8 @@ public class LoginUI extends JFrame {
 //    public static AmenitySpace makeAS = new AmenitySpace(roomNo);
     public static final int WIDTH = 600;
     public static final int HEIGHT = 300;
+    public static String user;
+    public static String pass;
 
     public static void main(String[] args) {
         try {
@@ -53,7 +55,7 @@ public class LoginUI extends JFrame {
     public static void loginHelper() throws IOException {
         StartScreen startScreenAttempt = new StartScreen();
         try {
-            startScreenAttempt.attemptLogin();
+            startScreenAttempt.attemptLogin(user, pass);
         } catch (LoginFail loginFail) {
             System.out.println("Login is invalid!");
         } finally {

@@ -12,6 +12,8 @@ public class StartScreen implements Loadable, Saveable {
     public static MeetingRoom makeMR = new MeetingRoom(roomNo);
     public static AmenitySpace makeAS = new AmenitySpace(roomNo);
     public String txt;
+    public String user;
+    public String pass;
 
 
 
@@ -28,14 +30,14 @@ public class StartScreen implements Loadable, Saveable {
         save(user, pass);
     }
 
-    public void attemptLogin() throws LoginFail {
+    public String attemptLogin(String user, String pass) throws LoginFail {
         String filePath = ("accounts.txt");
         Scanner reader2 = new Scanner(System.in);
         while (true) {
             System.out.print("Type your username: ");
-            String user = "123";
+            user = "123";
             System.out.print("Type your password: ");
-            String pass = "123";
+            pass = "123";
             if (load(user, pass)) {
                 System.out.println("Login Success!");
                 selectRoom();
@@ -44,6 +46,7 @@ public class StartScreen implements Loadable, Saveable {
             }
             break;
         }
+        return "";
     }
 
 
