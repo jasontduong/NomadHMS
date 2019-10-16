@@ -13,21 +13,14 @@ public abstract class Room {
         roomNum = roomNo;
     }
 
-    public int getRoomID() {
-        return roomID;
-    }
-
-    public void setRoomID(int roomID) {
-        this.roomID = roomID;
-    }
-
 
     public String bookRoom() {
         Scanner reader4 = new Scanner(System.in);
-        System.out.println("What room do you want to book?");
+        System.out.println("What room do you want to book? A, B, or C.");
         String bookRx = reader4.nextLine();
         if (bookRx.equals("A") || bookRx.equals("B") || bookRx.equals("C")) {
-            System.out.println("Your suite has been booked! You have booked suite " + bookRx);
+            setRoomNum(bookRx);
+            System.out.println("Your suite has been booked! You have booked suite " + getRoomNum());
         } else {
             System.out.println("Invalid room choice, please pick A, B, or C.");
         }
