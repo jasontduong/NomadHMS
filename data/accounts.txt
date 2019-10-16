@@ -43,3 +43,5 @@ newuser1:newpass1
 testuser6:password
 newuser1:newpass1
 testuser6:password
+newuser1:newpass1
+testuser6:password
