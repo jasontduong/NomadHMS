@@ -9,8 +9,8 @@ public abstract class Room {
     private int bedNumber;
 
 
-    public Room(String roomNo) {
-        roomNum = roomNo;
+    public Room(String roomNum) {
+        roomNum = roomNum;
     }
 
 
@@ -34,12 +34,6 @@ public abstract class Room {
     public void setRoomNum(String roomNum) {
         this.roomNum = roomNum;
     }
-
-    public void amenitySpace() {}
-
-    public void smallBoardRoom() {}
-
-    public void largeBoardRoom() {}
 
 
 }

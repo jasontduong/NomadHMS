@@ -7,27 +7,27 @@ import javax.swing.*;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class LoginUI extends JFrame {
-    //    public static String roomNo;
-//    //    private static Room makeRoom;
-//    public static MeetingRoom makeMR = new MeetingRoom(roomNo);
-//    public static AmenitySpace makeAS = new AmenitySpace(roomNo);
+public class LoginUI {
+
     public static final int WIDTH = 600;
     public static final int HEIGHT = 300;
     public static String user;
     public static String pass;
+    public static StartScreen startScreenAttempt;
+
+
 
     public static void main(String[] args) {
         try {
             choice();
-        } catch (IOException e) {
+        } catch (IOException | ClassNotFoundException e) {
             System.out.println("Invalid choice!");
         }
 
     }
 
-    public static void choice() throws IOException {
-        StartScreen startScreenAttempt = new StartScreen();
+    public static void choice() throws IOException, ClassNotFoundException {
+        startScreenAttempt = new StartScreen();
         Scanner reader1 = new Scanner(System.in);
 
         while (true) {
@@ -51,9 +51,8 @@ public class LoginUI extends JFrame {
     }
 
 
-
-    public static void loginHelper() throws IOException {
-        StartScreen startScreenAttempt = new StartScreen();
+    public static void loginHelper() throws IOException, ClassNotFoundException {
+        startScreenAttempt = new StartScreen();
         try {
             startScreenAttempt.attemptLogin(user, pass);
         } catch (LoginFail loginFail) {
