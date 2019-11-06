@@ -2,53 +2,66 @@ package login;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
+
 
 import exceptions.LoginFail;
 
 public class StartScreen implements Loadable, Saveable, Serializable {
-    HashMap<String, String> userpass = new HashMap<>();
+    Map<String, String> userpass = new HashMap<>();
     public static MeetingRoom makeMR;
     public static AmenitySpace makeAS;
     String filePath = ("data/accounts3.txt");
-    public String txt;
-    int count = 0;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StartScreen that = (StartScreen) o;
+        return userpass.equals(that.userpass) &&
+                filePath.equals(that.filePath);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userpass, filePath);
+    }
 
     public void attemptRegister() throws IOException, ClassNotFoundException {
-        StartScreen xd = new StartScreen();
+        HashMap<String, String> reload = load();
         Scanner input = new Scanner(System.in);
         System.out.println("Registration Page");
         System.out.println("Your username is a unique one so it cannot be changed.");
         System.out.print("Username: ");
-        String user = "123";
+        String user = input.nextLine();
         System.out.print("Password: ");
-        String pass = "123";
-        System.out.println("Registration successful!");
-        userpass.put(user, pass);
-        userpass.put("jd", "456");
-        userpass.put("td", "666");
-
-        save(userpass);
-        HashMap<String, String> restored = load();
-        System.out.println(restored);
+        String pass = input.nextLine();
+        if (!reload.containsKey(user)) {
+            userpass.put(user, pass);
+            save(userpass);
+            System.out.println("Registration successful!");
+        } else if (reload.containsKey(user)) {
+            System.out.println("Already registered!");
+        }
 
     }
 
     public String attemptLogin(String user, String pass) throws LoginFail, IOException, ClassNotFoundException {
         Scanner reader2 = new Scanner(System.in);
+        userpass.put("admin","admin");
         while (true) {
             System.out.print("Type your username: ");
-            user = "td";
+            user = reader2.nextLine();
             System.out.print("Type your password: ");
-            pass = "666";
-            if (load().containsKey("td")) {
-                String storedPassword = load().get("666");
-                if (storedPassword.equals("pass")) {
-                    System.out.println("Login Success!");
-                    selectRoom();
-                } else {
-                    System.out.println("Incorrect");
-                }
+            pass = reader2.nextLine();
+            HashMap result = load();
+            userpass.put("admin","admin");
+            if (result.containsKey(user)) {
+                System.out.println("Login Success!");
+                selectRoom();
+            } else if (!result.containsKey(user)) {
+                System.out.println("Incorrect, let us register you!");
+                attemptRegister();
             }
 //            if (!load()) {
 //                throw new LoginFail();
@@ -74,8 +87,12 @@ public class StartScreen implements Loadable, Saveable, Serializable {
     @Override
     public HashMap<String, String> load() throws IOException, ClassNotFoundException {
         {
+            HashMap loginInfo = new HashMap<String, String>();
             try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(filePath))) {
-                return (HashMap<String, String>) is.readObject();
+                while (loginInfo.isEmpty()) {
+                    loginInfo = (HashMap) is.readObject();
+                }
+                return loginInfo;
             }
         }
     }
@@ -97,8 +114,7 @@ public class StartScreen implements Loadable, Saveable, Serializable {
 //    }
 
     @Override
-    public void save(HashMap<String, String> users) throws IOException {
-        String delimiter = ":";
+    public void save(Map<String, String> users) throws IOException {
         FileOutputStream fileOut = new FileOutputStream(filePath);
         {
             try (ObjectOutputStream os = new ObjectOutputStream(fileOut)) {
