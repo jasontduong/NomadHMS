@@ -14,10 +14,12 @@ class BookRoomTest {
 
     @Test
     void bookMeeting() {
+        assertEquals("Thank you!", testBookRoom.bookMeeting());
     }
 
     @Test
     void bookSuite() {
+        assertEquals("Thank you!", testBookRoom.bookSuite());
     }
 
     @Test

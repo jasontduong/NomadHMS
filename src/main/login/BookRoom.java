@@ -1,8 +1,12 @@
 package login;
 
+import ui.observer.RoomSaver;
+
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Scanner;
 
-public class BookRoom {
+public class BookRoom extends Observable {
 
     private String roomNum;
     private String firstName;
@@ -15,12 +19,12 @@ public class BookRoom {
 
     public String bookMeeting() {
         System.out.println("What meeting room do you want to book? A, B, or C.");
-        String input = reader4.nextLine();
+        String input = "A";
         if (input.equals("A") || input.equals("B") || input.equals("C")) {
             setRoomNum(input);
-            bookInformation();
+//            bookInformation();
             System.out.println("Your meeting room has been booked! You have booked suite " + getRoomNum());
-            System.out.println(getInformation());
+//            System.out.println(getInformation());
         } else {
             System.out.println("Invalid room choice, please pick A, B, or C.");
         }
@@ -29,12 +33,15 @@ public class BookRoom {
 
     public String bookSuite() {
         System.out.println("What room do you want to book? 101, 102, 201, 202, 301, 302?");
-        String input = reader4.nextLine();
+        String input = "101";
+        addObserver(new RoomSaver());
         if (input.equals("101") || input.equals("102") || input.equals("201") || input.equals("202")) {
             setRoomNum(input);
-            bookInformation();
+            setChanged();
+//            bookInformation();
             System.out.println("Your suite has been booked! You have booked suite " + getRoomNum() + ".");
-            System.out.println(getInformation());
+//            System.out.println(getInformation());
+            notifyObservers(input);
         } else {
             System.out.println("Invalid room choice, please pick 101, 102, 103, 201, 202, 203, 301, 302, 303");
         }
@@ -46,24 +53,24 @@ public class BookRoom {
                 + "\n" + getPhoneNum() + "\n" + getEmail() + "\n" + getNights();
     }
 
-    public void bookInformation() {
-        System.out.println("First name?");
-        String input1 = reader4.nextLine();
-        setFirstName(input1);
-        System.out.println("Last name?");
-        String input2 = reader4.nextLine();
-        setLastName(input2);
-        System.out.println("Phone number?");
-        String input3 = reader4.nextLine();
-        setPhoneNum(input3);
-        System.out.println("E-mail?");
-        String input4 = reader4.nextLine();
-        setEmail(input4);
-        System.out.println("How many nights starting from today?");
-        String input5 = reader4.nextLine();
-        setNights(input5);
-
-    }
+//    public void bookInformation() {
+//        System.out.println("First name?");
+//        String input1 = reader4.nextLine();
+//        setFirstName(input1);
+//        System.out.println("Last name?");
+//        String input2 = reader4.nextLine();
+//        setLastName(input2);
+//        System.out.println("Phone number?");
+//        String input3 = reader4.nextLine();
+//        setPhoneNum(input3);
+//        System.out.println("E-mail?");
+//        String input4 = reader4.nextLine();
+//        setEmail(input4);
+//        System.out.println("How many nights starting from today?");
+//        String input5 = reader4.nextLine();
+//        setNights(input5);
+//
+//    }
 
     public String getRoomNum() {
         return roomNum;
