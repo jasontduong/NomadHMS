@@ -1,7 +1,7 @@
 package ui;
 
 import exceptions.LoginFail;
-import login.LoadSave;
+import ui.login.LoadSave;
 import login.BookRoom;
 
 import java.io.*;
@@ -54,10 +54,13 @@ public class StartScreen {
 
     public String selectRoom() {
         Scanner reader2 = new Scanner(System.in);
-        System.out.println("What suite do you want to book? Suite (S), Amenity Space (AS), or Meeting Room (MR)?");
+        System.out.println("Do you want to book a Suite (S) or  Meeting Room (MR)?");
         String selectR = reader2.nextLine();
-        if (selectR.equals("AS") || selectR.equals("MR") || selectR.equals("S")) {
-            bookroom.bookRoom();
+        if (selectR.equals("S")) {
+            bookroom.bookSuite();
+        }
+        if (selectR.equals("MR")) {
+            bookroom.bookMeeting();
         }
         return "Sure!";
     }

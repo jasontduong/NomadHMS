@@ -1,4 +1,4 @@
-package login;
+package ui.login;
 
 import java.io.*;
 import java.util.HashMap;

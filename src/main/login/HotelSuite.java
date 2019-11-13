@@ -3,6 +3,8 @@ package login;
 public class HotelSuite {
     private int roomNumber;
     private boolean isAccessibleFriendly;
+    private boolean isAlleySide;
+    private boolean isDeluxeSuite;
 
 
     public int getRoomNumber() {
@@ -21,6 +23,21 @@ public class HotelSuite {
         this.isAccessibleFriendly = accessibleFriendly;
     }
 
+    public boolean isAlleySide() {
+        return isAlleySide;
+    }
+
+    public void setAlleySide(boolean alleySide) {
+        this.isAlleySide = alleySide;
+    }
+
+    public boolean isDeluxeSuite() {
+        return isDeluxeSuite;
+    }
+
+    public void setDeluxeSuite(boolean deluxeSuite) {
+        this.isDeluxeSuite = deluxeSuite;
+    }
 
 
 }
