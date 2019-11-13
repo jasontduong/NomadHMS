@@ -25,8 +25,6 @@ public class BookRoom extends Observable {
 //            bookInformation();
             System.out.println("Your meeting room has been booked! You have booked suite " + getRoomNum());
 //            System.out.println(getInformation());
-        } else {
-            System.out.println("Invalid room choice, please pick A, B, or C.");
         }
         return "Thank you!";
     }

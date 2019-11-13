@@ -1,6 +1,6 @@
 package ui;
 
-import exceptions.LoginFail;
+import ui.login.exceptions.LoginFail;
 import ui.login.LoadSave;
 import login.BookRoom;
 
