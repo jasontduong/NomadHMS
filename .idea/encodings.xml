@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/data/icons8_Box_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_GPS_Antenna_64px_1.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Home_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Meanpath_64px_2.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Open_Envelope_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Person_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Search_52px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Sign_Out_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Slider__32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/icons8_Xbox_Menu_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/data/jimmy-fallon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Box_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_GPS_Antenna_64px_1.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Home_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Meanpath_64px_2.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Open_Envelope_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Person_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Search_52px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Sign_Out_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Slider__32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/icons8_Xbox_Menu_32px.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/jimmy-fallon.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/ui/home/style.css" charset="UTF-8" />
     <file url="PROJECT" charset="windows-1252" />
   </component>
 </project>
