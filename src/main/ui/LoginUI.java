@@ -1,9 +1,7 @@
 package ui;
 
 import exceptions.LoginFail;
-import login.StartScreen;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -54,7 +52,7 @@ public class LoginUI {
     public static void loginHelper() throws IOException, ClassNotFoundException {
         startScreenAttempt = new StartScreen();
         try {
-            startScreenAttempt.attemptLogin(user, pass);
+            startScreenAttempt.attemptLogin();
         } catch (LoginFail loginFail) {
             System.out.println("Login is invalid!");
         } finally {

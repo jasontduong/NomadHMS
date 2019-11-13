@@ -1,10 +1,8 @@
 package login;
 
-import exceptions.LoginFail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.IOException;
+import ui.StartScreen;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,9 +25,6 @@ class StartScreenTest {
     @Test
     public void testSelectRoom() {
         String roomNo = "AS";
-        MeetingRoom makeMR = new MeetingRoom(roomNo);
-        AmenitySpace makeAS = new AmenitySpace(roomNo);
-        assertEquals(makeAS.bookRoom(), "Thank you!");
     }
 
 //    @Test
