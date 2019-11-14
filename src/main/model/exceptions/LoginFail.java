@@ -1,4 +1,4 @@
-package ui.login.exceptions;
+package model.exceptions;
 
 public class LoginFail extends Exception {
 }

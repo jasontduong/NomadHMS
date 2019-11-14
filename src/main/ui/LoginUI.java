@@ -1,14 +1,14 @@
 package ui;
 
-import ui.login.exceptions.LoginFail;
+import model.exceptions.LoginFail;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-//import org.jsoup.Jsoup;
-//import org.jsoup.nodes.Document;
-//import org.jsoup.nodes.Element;
-//import org.jsoup.select.Elements;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class LoginUI {
 
@@ -21,7 +21,7 @@ public class LoginUI {
 
     public static void main(String[] args) {
         try {
-//            parse();
+            parse();
             choice();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Invalid choice!");
@@ -63,18 +63,18 @@ public class LoginUI {
         }
     }
 
-//    private static void parse() {
-//        System.out.println("Printing out list of top hotels in Downtown Vancouver from TripAdvisor...");
-//        try {
-//            Document doc = Jsoup.connect("https://www.tripadvisor.ca/HotelsList-Vancouver-Downtown-Hotels-zfp10838232.html").userAgent("Mozilla/17.0").get();
-//            Elements temp = doc.select("div.listing_title");
-//            int i = 0;
-//            for (Element hotelList : temp) {
-//                i++;
-//                System.out.println(i + " " + hotelList.getElementsByTag("a").first().text());
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private static void parse() {
+        System.out.println("Printing out list of top hotels in Downtown Vancouver from TripAdvisor...");
+        try {
+            Document doc = Jsoup.connect("https://www.tripadvisor.ca/HotelsList-Vancouver-Downtown-Hotels-zfp10838232.html").userAgent("Mozilla/17.0").get();
+            Elements temp = doc.select("div.listing_title");
+            int i = 0;
+            for (Element hotelList : temp) {
+                i++;
+                System.out.println(i + " " + hotelList.getElementsByTag("a").first().text());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

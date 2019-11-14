@@ -1,7 +1,7 @@
 package ui;
 
-import ui.login.exceptions.LoginFail;
-import ui.login.LoadSave;
+import model.exceptions.LoginFail;
+import model.LoadSave;
 import model.BookRoom;
 
 import java.io.*;

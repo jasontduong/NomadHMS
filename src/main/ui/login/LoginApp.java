@@ -9,10 +9,10 @@ import javafx.stage.StageStyle;
 
 import static javafx.scene.paint.Color.TRANSPARENT;
 
-public class MainApp extends Application {
+public class LoginApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent fxml = FXMLLoader.load(getClass().getResource("login/login.fxml"));
+        Parent fxml = FXMLLoader.load(getClass().getResource("login.fxml"));
 
         Scene scene = new Scene(fxml);
 
