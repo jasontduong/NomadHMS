@@ -2,14 +2,14 @@ package model;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import ui.StartScreen;
+import ui.login.LoginChoice;
 
-class StartScreenTest {
-    StartScreen testStartScreen1;
+class LoginChoiceTest {
+    private LoginChoice testLoginChoice1;
 
     @BeforeEach
-    public void setup() {
-        testStartScreen1 = new StartScreen();
+    private void setup() {
+        testLoginChoice1 = new LoginChoice();
     }
 
     @Test
@@ -21,7 +21,7 @@ class StartScreenTest {
     }
 
     @Test
-    public void testSelectRoom() {
+    private void testSelectRoom() {
         String roomNo = "AS";
     }
 

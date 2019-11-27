@@ -1,5 +1,6 @@
 package ui.login;
 
+import ui.dashboard.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,7 +10,7 @@ import javafx.stage.StageStyle;
 
 import static javafx.scene.paint.Color.TRANSPARENT;
 
-public class LoginApp extends Application {
+public class StartApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent fxml = FXMLLoader.load(getClass().getResource("login.fxml"));
